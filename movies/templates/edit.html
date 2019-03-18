@@ -1,0 +1,20 @@
+<form method="POST">
+    {% csrf_token %}
+    영화제목:<input type="text" name="title" value="{{movie.title}}"><br>
+    관객 수:<input type="int" name="audience" value="{{movie.audience}}"><br>
+    설명:<input type="text" name="description" value = "{{movie.description}}"><br>
+    영화 소개:<textarea name="description">{{movie.description}}</textarea><br>
+    장르 : <select name="genre">
+        {% for genre in genres %}
+            {% if genre.id == movie.genre.id %}
+                <option value="{{genre.id}}"selected>{{genre.name}}</option>
+            {% else %}
+                <option value="{{genre.id}}">{{genre.name}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <!--평점:<input type="int" name="score" value=""><br>-->
+    <!--포스터:<input type="text" name="poster_url" value="{{movie.poster_url}}"><br>-->
+    
+    <input type="submit">
+</form>
